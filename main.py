@@ -5,7 +5,7 @@ train9 = []
 train1 = []
 test1 = []
 test9 = []
-#delete less than 10 games 
+#delete less than 10 games
 
 #reads the hero data and puts it in the dictionary heroInfo
 def readHeroData():
@@ -93,7 +93,7 @@ def graphDataNormal():
         y.append([])
     for player in train9:
         x.append(player[1])
-        y[int(player[1]) - 1].append(player[5])
+        y[int(player[1]) - 1].append(player[6])
     for xe, ye in zip(x, y):
         plt.scatter([xe] * len(ye), ye)
     plt.show()
