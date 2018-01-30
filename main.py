@@ -6,6 +6,7 @@ train9 = []
 train1 = []
 test1 = []
 test9 = []
+heroDataAssist = []
 #delete less than 10 games
 
 
@@ -18,6 +19,13 @@ def plotratiovskda():
     plt.scatter(x, y)
     plt.show()
 #reads the hero data and puts it in the dictionary heroInfo
+def readHeroDataAssist():
+    with open("../felicityChallenge/hero_dataAssist.csv") as data:
+        lines = data.read().split('\n')[:-1]
+        for line in lines:
+            tokens = line.split(',')
+            heroDataAssist.append(tokens[1])
+
 def readHeroData():
     with open("../felicityChallenge/hero_data.csv") as data:
         lines = data.read().split('\n')[1:-1]#remove first and last entry
@@ -212,6 +220,25 @@ def addKDAtoHeros():
         for val in cool:
             writer.writerow(val)
 
+def createheroKDASheet():
+    x = []
+    y = []
+    for player in train9:
+        x.append(heroDataAssist[int(player[1]) - 1])
+    for player in test9:
+        y.append(heroDataAssist[int(player[1]) - 1])
+    print(x)
+    print(y)
+    with open("train9Assist2.csv", 'w', newline='') as f:
+        writer = csv.writer(f)
+        for val in x:
+            writer.writerow([val])
+    with open("test9Assist2.csv", 'w', newline='') as f:
+        writer = csv.writer(f)
+        for val in y:
+            writer.writerow([val])
+
+
 
 
 
@@ -224,10 +251,12 @@ readTrain9()
 readTrain1()
 readTest1()
 readTest9()
-
+readHeroDataAssist()
 addKDAtoHeros()
 addSkillTrain9()
 addSkillTest9()
+createheroKDASheet()
+print(heroDataAssist)
 #plotratiovskda()
 #normalizeKDA()
 #graphDataAverages()
