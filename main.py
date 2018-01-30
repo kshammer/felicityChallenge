@@ -165,7 +165,8 @@ def addSkillTrain9():
         writer = csv.writer(f)
         cool = zip(x, y1)
         for val in cool:
-            writer.writerow(val)
+            for z in range(9):
+                writer.writerow(val)
 def addSkillTest9():
     x = []
     y = []
@@ -187,7 +188,8 @@ def addSkillTest9():
         writer = csv.writer(f)
         cool = zip(x, y1)
         for val in cool:
-            writer.writerow(val)
+            for z in range(9):
+                writer.writerow(val)
 def addKDAtoHeros():
     x = list(range(1, 122))
     y = []
