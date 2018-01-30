@@ -161,7 +161,7 @@ def addSkillTrain9():
             print("ez")
         u += 1
 
-    with open("train9.csv", 'a', newline='') as f:
+    with open("train9Assit.csv", 'w', newline='') as f:
         writer = csv.writer(f)
         cool = zip(x, y1)
         for val in cool:
@@ -183,26 +183,11 @@ def addSkillTest9():
             print("ez")
         u += 1
 
-    with open("test9.csv", 'a', newline='') as f:
+    with open("test9Assit.csv", 'w', newline='') as f:
         writer = csv.writer(f)
         cool = zip(x, y1)
         for val in cool:
             writer.writerow(val)
-def graphDataAverages():
-    x = list(range(1,122))
-    y = []
-    y1 = []
-    for z in range(1, 122):
-        y.append([])
-    for player in train9:
-        y[int(player[1]) -1].append(float(player[5]))
-    for sub in y:
-        if len(sub) > 0:
-            y1.append(np.mean(sub))
-    #x = list(range(1, len(y1) + 1))
-    z = [x for _, x in sorted(zip(y1,x))]
-    print(z)
-    y1 = sorted(y1)
 def addKDAtoHeros():
     x = list(range(1, 122))
     y = []
@@ -219,7 +204,7 @@ def addKDAtoHeros():
         else:
             y1.append(0)
 
-    with open("hero_data.csv", 'a', newline='') as f:
+    with open("hero_dataAssist.csv", 'w', newline='') as f:
         writer = csv.writer(f)
         cool = zip(x, y1)
         for val in cool:
